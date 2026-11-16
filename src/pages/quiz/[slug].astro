@@ -18,19 +18,21 @@ const label = quiz.slug === "recap" ? "le récap de la Partie I" : `la vidéo ${
   <main class="page quiz">
     <!-- Accueil du quiz -->
     <section id="intro" class="intro" aria-labelledby="intro-title">
-      <a class="back" href="/">Tous les quiz</a>
+      <a class="back rest" href="/">Tous les quiz</a>
       <div class="intro-grid">
         <div>
-          <p class="hand red kicker">{quiz.number}</p>
-          <h1 id="intro-title">{quiz.title}</h1>
-          <p class="lead">{total} questions, à la suite, sur ce que montre la vidéo. Après chaque réponse, une courte explication. Compte une dizaine de minutes.</p>
+          <p class="hand red kicker rest">{quiz.number}</p>
+          <h1 id="intro-title"><span class="sr-only">Quiz : </span>{quiz.title}</h1>
+          <p class="lead rest">{total} questions, à la suite, sur ce que montre la vidéo. Après chaque réponse, une courte explication. Compte une dizaine de minutes.</p>
           <p class="hand best-line" id="intro-best" hidden></p>
+          <div class="rest">
           <div class="actions">
             <button class="btn" id="start" type="button">Commencer le quiz</button>
             {links.video && <a class="btn ghost" href={links.video} rel="noopener">Revoir la vidéo</a>}
           </div>
+          </div>
         </div>
-        <img class="thumb" src={quiz.image} alt="" width="640" height="360" />
+        <img class="thumb rest" src={quiz.image} alt="" width="640" height="360" />
       </div>
     </section>
 
@@ -151,7 +153,12 @@ const label = quiz.slug === "recap" ? "le récap de la Partie I" : `la vidéo ${
   .feedback.ok { border-left-color: var(--green); }
   .verdict { font-size: 1.75rem; line-height: 1.1; color: var(--red); }
   .feedback.ok .verdict { color: var(--green); }
-  #explanation { margin-top: 4px; font-size: 1.0625rem; max-width: 62ch; }
+  #explanation { margin-top: 4px; font-size: clamp(1.0625rem, 1.6vw, 1.25rem); max-width: 62ch; }
+  #explanation::first-letter, .missed :global(.me::first-letter) { text-transform: uppercase; }
+  @media (min-width: 900px) {
+    .answers :global(button) { font-size: 1.3rem; min-height: 64px; }
+    :global(.q-robot) { width: 104px; height: 91px; }
+  }
   .next-row { margin-top: 26px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
   .hint { font-size: 0.9375rem; }
   @media (max-width: 640px) { #next { width: 100%; } .hint { display: none; } }

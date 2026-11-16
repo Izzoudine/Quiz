@@ -25,7 +25,12 @@ export function mountQuiz() {
   }
 
   function show(section: HTMLElement) {
-    for (const el of [intro, play, end]) el.hidden = el !== section;
+    for (const el of [play, end]) el.hidden = el !== section;
+    // le titre (h1) reste toujours dans la page ; hors de l'accueil du quiz il n'est que lu, pas affiché
+    const away = section !== intro;
+    intro.classList.toggle("sr-only", away);
+    intro.querySelectorAll<HTMLElement>(".rest").forEach((el) => (el.hidden = away));
+    if (away) intro.querySelector<HTMLElement>("#intro-best")!.hidden = true;
     window.scrollTo({ top: 0 });
   }
 

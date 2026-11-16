@@ -4,16 +4,19 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build", "images": "node tools/og.mjs",
+    "build": "astro build",
+    "images": "node tools/og.mjs",
     "preview": "astro preview",
     "test": "vitest run",
     "extract": "python tools/extract_quiz.py ../descriptions_et_quiz_partie1.pdf"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
     "@fontsource/caveat": "^5.3.0",
     "@fontsource/figtree": "^5.3.0",
     "@fontsource/fraunces": "^5.3.0",
     "astro": "^5.18.2",
+    "playwright": "^1.65.1",
     "sharp": "^0.35.5",
     "typescript": "^5.9.3",
     "vitest": "^3.2.7"
