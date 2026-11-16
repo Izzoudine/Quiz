@@ -1,0 +1,21 @@
+{
+  "name": "quiz-llm-de-zero",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "node tools/og.mjs && astro build",
+    "preview": "astro preview",
+    "test": "vitest run",
+    "extract": "python tools/extract_quiz.py ../descriptions_et_quiz_partie1.pdf"
+  },
+  "devDependencies": {
+    "@fontsource/caveat": "^5.3.0",
+    "@fontsource/figtree": "^5.3.0",
+    "@fontsource/fraunces": "^5.3.0",
+    "astro": "^5.18.2",
+    "sharp": "^0.35.5",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  }
+}

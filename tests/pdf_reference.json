@@ -1,0 +1,1022 @@
+[
+ {
+  "slug": "1",
+  "questions": [
+   {
+    "q": "Au fond, que fait un modèle de langage comme ChatGPT ?",
+    "answers": [
+     "Il comprend le sens des phrases comme un humain",
+     "Il devine la suite d'un texte",
+     "Il cherche la réponse sur Internet",
+     "Il recopie des phrases apprises par cœur"
+    ],
+    "correct": 1,
+    "explanation": "tout ce qu'il fait (répondre, traduire, résumer) vient d'un seul talent : deviner ce qui vient ensuite, encore et encore."
+   },
+   {
+    "q": "Comment notre robot a-t-il appris à écrire des mots et des virgules ?",
+    "answers": [
+     "On lui a appris les règles de grammaire",
+     "Un humain corrigeait chacune de ses phrases",
+     "En lisant des fables et en essayant de deviner la lettre suivante",
+     "En lisant un dictionnaire"
+    ],
+    "correct": 2,
+    "explanation": "personne ne lui a appris la grammaire. Il l'a découverte seule, à force de deviner la suite du texte."
+   },
+   {
+    "q": "Pourquoi dit-on que « le texte est son propre professeur » ?",
+    "answers": [
+     "Parce que le texte contient des leçons de grammaire",
+     "Parce que la bonne réponse est déjà écrite juste après",
+     "Parce qu'un professeur a écrit les fables",
+     "Parce que le robot relit toujours le même texte"
+    ],
+    "correct": 1,
+    "explanation": "on cache la lettre suivante et on lui demande de la deviner. La bonne réponse est dans le texte : des milliers d'exercices corrigés, sans aucun prof."
+   },
+   {
+    "q": "À quoi sert la molette « température » ?",
+    "answers": [
+     "À éviter que l'ordinateur chauffe",
+     "À accélérer l'apprentissage",
+     "À régler l'audace du robot : prudent ou créatif",
+     "À choisir la langue du texte"
+    ],
+    "correct": 2,
+    "explanation": "basse, le robot choisit presque toujours la lettre la plus sûre et se répète ; haute, il prend des risques, jusqu'à écrire n'importe quoi."
+   },
+   {
+    "q": "Si on demande à notre petit robot « Quelle est la capitale du Bénin ? », que se passe-t-il ?",
+    "answers": [
+     "Il répond « Porto-Novo »",
+     "Il répond « Cotonou »",
+     "Il continue la phrase au lieu de répondre",
+     "Il refuse de répondre"
+    ],
+    "correct": 2,
+    "explanation": "un modèle brut ne sait que compléter du texte. Pour qu'il réponde, il lui faut une seconde éducation, comme celle de ChatGPT."
+   },
+   {
+    "q": "Avant son entraînement, qu'écrit le robot quand on lui donne « Le loup » ?",
+    "answers": [
+     "Une fable complète",
+     "Des lettres au hasard, du bruit",
+     "Rien du tout",
+     "Une phrase en anglais"
+    ],
+    "correct": 1,
+    "explanation": "ses réglages sont tirés au hasard, il ne sait encore rien. Toute la différence viendra de l'entraînement."
+   },
+   {
+    "q": "Sur quels textes notre robot s'entraîne-t-il ?",
+    "answers": [
+     "Des articles de journaux",
+     "Des conversations de ChatGPT",
+     "Des fables de La Fontaine",
+     "Un dictionnaire"
+    ],
+    "correct": 2,
+    "explanation": "quelques fables suffisent, moins lourdes qu'une seule photo de téléphone, pour qu'il apprenne à écrire dans leur style."
+   },
+   {
+    "q": "Quelle est la différence entre notre petit robot et ChatGPT ?",
+    "answers": [
+     "Ce sont deux machines totalement différentes",
+     "ChatGPT comprend, notre robot devine",
+     "C'est la même espèce de machine : seule la taille change",
+     "Notre robot est plus intelligent"
+    ],
+    "correct": 2,
+    "explanation": "un moustique à côté d'une baleine, mais le même squelette et la même façon d'apprendre."
+   },
+   {
+    "q": "Le robot ne lit pas vraiment des lettres. Que voit-il à la place ?",
+    "answers": [
+     "Des images",
+     "Des sons",
+     "Des nombres : chaque lettre a son numéro",
+     "Des mots entiers"
+    ],
+    "correct": 2,
+    "explanation": "avant de lire, on traduit. Chaque morceau de texte numéroté s'appelle un token."
+   },
+   {
+    "q": "Qu'y a-t-il dans la tête du robot ?",
+    "answers": [
+     "Une mémoire de toutes les fables",
+     "Des réglages (les poids) et une notice écrite par un humain",
+     "Un dictionnaire et une grammaire",
+     "Une connexion à Internet"
+    ],
+    "correct": 1,
+    "explanation": "la notice ne change jamais. Apprendre, c'est uniquement trouver la bonne position de chaque réglage."
+   },
+   {
+    "q": "Quand on dit qu'une IA a « des milliards de paramètres », que compte-t-on ?",
+    "answers": [
+     "Les mots qu'elle connaît",
+     "Les textes qu'elle a lus",
+     "Ses réglages, comme des petits boutons",
+     "Les questions qu'on lui a posées"
+    ],
+    "correct": 2,
+    "explanation": "les paramètres, ce sont les poids : les nombres que l'entraînement ajuste un par un."
+   },
+   {
+    "q": "Dans quel ordre se déroule le refrain de l'entraînement ?",
+    "answers": [
+     "Corriger, deviner, mesurer, recommencer",
+     "Deviner, mesurer, corriger, recommencer",
+     "Mesurer, recommencer, deviner, corriger",
+     "Deviner, recommencer, mesurer, corriger"
+    ],
+    "correct": 1,
+    "explanation": "il devine la lettre cachée, on mesure son erreur, on corrige ses réglages d'un cheveu, et on recommence des milliers de fois."
+   },
+   {
+    "q": "Qu'est-ce que la « loss » ?",
+    "answers": [
+     "Le nombre de lettres que le robot connaît",
+     "La durée de l'entraînement",
+     "Un seul chiffre qui mesure à quel point il se trompe",
+     "Le nombre de fables lues"
+    ],
+    "correct": 2,
+    "explanation": "quand la loss baisse, le robot se trompe moins. La regarder fondre, c'est voir l'apprentissage."
+   },
+   {
+    "q": "Pourquoi ChatGPT écrit-il sa réponse petit à petit sous tes yeux ?",
+    "answers": [
+     "Pour faire joli",
+     "Parce que la connexion est lente",
+     "Parce qu'il choisit un morceau de texte à la fois, l'un après l'autre",
+     "Parce qu'il recopie un texte existant"
+    ],
+    "correct": 2,
+    "explanation": "il devine un morceau, l'ajoute au texte, puis devine le suivant. Tu regardes ce rituel en direct."
+   },
+   {
+    "q": "Qu'est-ce qui transforme un assistant en « agent » ?",
+    "answers": [
+     "Lui faire lire plus de fables",
+     "Augmenter sa température",
+     "Lui donner des outils pour agir : chercher sur le web, lancer du code",
+     "Lui apprendre une nouvelle langue"
+    ],
+    "correct": 2,
+    "explanation": "un agent ne se contente plus de décrire la route : il la prend, regarde le résultat et recommence jusqu'au but."
+   }
+  ]
+ },
+ {
+  "slug": "2",
+  "questions": [
+   {
+    "q": "Ayélé note sa recette ainsi : 3, 2 (3 ananas, 2 poignées de gingembre). Que se passe-t- il si on écrit 2, 3 ?",
+    "answers": [
+     "Rien, c'est la même recette",
+     "C'est une autre recette : plus de gingembre que d'ananas",
+     "Le jus est deux fois plus grand",
+     "La liste n'a plus de sens"
+    ],
+    "correct": 1,
+    "explanation": "dans un vecteur, chaque place a un sens fixe. Inverser les nombres change la recette."
+   },
+   {
+    "q": "Un ananas coûte 250 francs et une poignée de gingembre 100 francs. Combien coûte un bidon avec 3 ananas et 2 poignées ?",
+    "answers": [
+     "350 francs",
+     "700 francs",
+     "950 francs",
+     "1 750 francs"
+    ],
+    "correct": 2,
+    "explanation": "3 × 250 = 750, plus 2 × 100 = 200, soit 950. On multiplie case par case, puis on additionne : c'est le produit scalaire."
+   },
+   {
+    "q": "Deux flèches forment un angle droit. Que vaut leur produit scalaire ?",
+    "answers": [
+     "Il est très grand",
+     "Il vaut zéro",
+     "Il est négatif",
+     "Il vaut toujours 1"
+    ],
+    "correct": 1,
+    "explanation": "le produit scalaire mesure la ressemblance. Même direction : grand ; angle droit : zéro, aucun rapport ; directions opposées : négatif."
+   },
+   {
+    "q": "Quelle règle faut-il respecter pour multiplier deux tableaux de nombres ?",
+    "answers": [
+     "Ils doivent avoir exactement la même taille",
+     "La ligne et la colonne qu'on multiplie doivent avoir la même longueur",
+     "Ils ne doivent contenir que des nombres entiers",
+     "Il n'y a aucune règle"
+    ],
+    "correct": 1,
+    "explanation": "chaque case du résultat vient d'une ligne multipliée par une colonne. Deux ingrédients d'un côté, il faut deux prix de l'autre."
+   },
+   {
+    "q": "Pourquoi les IA tournent-elles sur des cartes graphiques ?",
+    "answers": [
+     "Parce qu'elles affichent de belles images",
+     "Parce qu'elles consomment moins d'électricité",
+     "Parce qu'elles font des millions de calculs en même temps",
+     "Parce qu'elles ont plus de mémoire qu'un téléphone"
+    ],
+    "correct": 2,
+    "explanation": "une IA passe son temps à multiplier des tableaux de nombres. Une carte graphique est justement faite pour faire ces calculs en parallèle."
+   },
+   {
+    "q": "Quand on ouvre le fichier du robot, comment ses nombres sont-ils rangés ?",
+    "answers": [
+     "En vrac, sans aucun ordre",
+     "Dans cinq paquets : trois tableaux et deux listes",
+     "Dans un seul grand tableau",
+     "Par ordre alphabétique"
+    ],
+    "correct": 1,
+    "explanation": "première surprise du chapitre : presque cent mille nombres, mais seulement cinq paquets bien rangés."
+   },
+   {
+    "q": "Comment appelle-t-on une simple liste de nombres ?",
+    "answers": [
+     "Une matrice",
+     "Un paquet",
+     "Un vecteur",
+     "Un tableau"
+    ],
+    "correct": 2,
+    "explanation": "une liste, c'est un vecteur ; un tableau avec des lignes et des colonnes, c'est une matrice."
+   },
+   {
+    "q": "Avec des flèches, que veut dire additionner deux vecteurs ?",
+    "answers": [
+     "Les superposer",
+     "Les mettre bout à bout",
+     "Les faire tourner",
+     "Garder la plus longue"
+    ],
+    "correct": 1,
+    "explanation": "la flèche de mardi se pose au bout de celle de lundi. Le total va tout droit du départ à l'arrivée."
+   },
+   {
+    "q": "Ayélé prépare dix bidons au lieu d'un. Que devient la flèche de sa recette ?",
+    "answers": [
+     "Elle change de direction",
+     "Elle rétrécit",
+     "Elle garde la même direction et devient dix fois plus longue",
+     "Elle ne change pas"
+    ],
+    "correct": 2,
+    "explanation": "multiplier par un nombre, c'est allonger la flèche sans la faire tourner : la même recette, en plus grand."
+   },
+   {
+    "q": "Lundi, Ayélé achète 3 ananas et 2 gingembres. Mardi, 1 ananas et 4 gingembres. Quel est le total ?",
+    "answers": [
+     "3 ananas et 8 gingembres",
+     "4 ananas et 6 gingembres",
+     "5 ananas et 5 gingembres",
+     "4 ananas et 2 gingembres"
+    ],
+    "correct": 1,
+    "explanation": "on additionne place par place : les ananas avec les ananas (3 + 1), le gingembre avec le gingembre (2 + 4)."
+   },
+   {
+    "q": "Quels sont les deux gestes du produit scalaire ?",
+    "answers": [
+     "Additionner les deux listes, puis diviser",
+     "Multiplier case par case, puis tout additionner",
+     "Trier les nombres, puis garder le plus grand",
+     "Multiplier tous les nombres entre eux"
+    ],
+    "correct": 1,
+    "explanation": "deux listes entrent, un seul nombre sort. C'est exactement le calcul du prix d'un bidon au marché."
+   },
+   {
+    "q": "Deux flèches pointent dans des directions opposées. Comment est leur produit scalaire ?",
+    "answers": [
+     "Très grand",
+     "Égal à zéro",
+     "Négatif",
+     "Impossible à calculer"
+    ],
+    "correct": 2,
+    "explanation": "même direction : grand ; angle droit : zéro ; directions opposées : négatif. Ce calcul mesure la ressemblance."
+   },
+   {
+    "q": "Dans le tableau des coûts d'Ayélé, comment obtient-on chaque case ?",
+    "answers": [
+     "En additionnant tous les prix",
+     "En recopiant la recette",
+     "Avec le produit scalaire d'une ligne de recette et d'une colonne de prix",
+     "En multipliant tous les nombres du tableau"
+    ],
+    "correct": 2,
+    "explanation": "un produit matriciel n'est qu'une collection de produits scalaires, rangés en tableau."
+   },
+   {
+    "q": "Avec le regard des flèches, que fait une matrice quand on l'applique ?",
+    "answers": [
+     "Elle efface le dessin",
+     "Elle déforme l'espace : le carré se penche et s'étire",
+     "Elle change les couleurs",
+     "Elle ne fait rien de visible"
+    ],
+    "correct": 1,
+    "explanation": "une matrice est un tableau de nombres, mais aussi une machine qui transforme tout ce qu'on lui donne."
+   },
+   {
+    "q": "Quand le robot lit un texte, par quoi chaque lettre est-elle d'abord remplacée ?",
+    "answers": [
+     "Par un mot entier",
+     "Par une image",
+     "Par une liste de 24 nombres, comme une carte d'identité",
+     "Par un seul chiffre"
+    ],
+    "correct": 2,
+    "explanation": "ces listes forment le premier paquet du fichier. Elles traversent ensuite les tableaux de réglages."
+   }
+  ]
+ },
+ {
+  "slug": "3",
+  "questions": [
+   {
+    "q": "Pour mesurer l'erreur d'un tarif, pourquoi met-on chaque écart au carré ?",
+    "answers": [
+     "Pour que le calcul aille plus vite",
+     "Pour qu'un écart compte toujours, trop haut ou trop bas, et que les gros écarts pèsent plus",
+     "Pour obtenir un résultat en francs",
+     "Pour que l'erreur soit toujours égale à zéro"
+    ],
+    "correct": 1,
+    "explanation": "sans le carré, un écart trop haut et un écart trop bas s'annuleraient. Avec, les grosses erreurs coûtent beaucoup plus cher."
+   },
+   {
+    "q": "Au tarif actuel, la pente de l'erreur est négative. Que faut-il faire ?",
+    "answers": [
+     "Augmenter le tarif",
+     "Baisser le tarif",
+     "Ne rien changer",
+     "Recommencer depuis zéro"
+    ],
+    "correct": 0,
+    "explanation": "une pente négative veut dire que l'erreur baisse quand le tarif monte. On pousse donc le tarif vers le haut."
+   },
+   {
+    "q": "Que se passe-t-il si le pas (le learning rate) est beaucoup trop grand ?",
+    "answers": [
+     "L'apprentissage va plus vite et mieux",
+     "Le programme affiche un message d'erreur",
+     "Chaque pas saute par-dessus la vallée, et l'erreur explose sans aucun message",
+     "Le robot s'arrête au premier essai"
+    ],
+    "correct": 2,
+    "explanation": "la bille rebondit d'un versant à l'autre, de plus en plus haut. Le programme est juste, c'est le réglage qui est mauvais : on divise le pas par dix."
+   },
+   {
+    "q": "Avec plusieurs boutons à régler, qu'est-ce que le gradient ?",
+    "answers": [
+     "Le meilleur réglage possible",
+     "La liste des pentes, une par bouton",
+     "Le nombre de boutons du modèle",
+     "La vitesse de l'ordinateur"
+    ],
+    "correct": 1,
+    "explanation": "on tâte la pente dans chaque direction, une par bouton. Ensemble, elles forment une flèche qui montre la montée la plus raide ; on marche à l'opposé."
+   },
+   {
+    "q": "Un calcul passe par trois maillons de pentes 2, 3 et 0,5. Quelle est la pente de toute la chaîne ?",
+    "answers": [
+     "2 + 3 + 0,5 = 5,5",
+     "2 × 3 × 0,5 = 3",
+     "Seulement 0,5, la dernière",
+     "On ne peut pas le savoir"
+    ],
+    "correct": 1,
+    "explanation": "c'est la règle de la chaîne. Une petite secousse est amplifiée par chaque maillon l'un après l'autre : les pentes se multiplient."
+   },
+   {
+    "q": "Au début de la vidéo, quel est le seul « bouton » que Sètondji doit régler ?",
+    "answers": [
+     "La vitesse de sa moto",
+     "Le nombre de clients",
+     "Son tarif par kilomètre",
+     "La durée de ses trajets"
+    ],
+    "correct": 2,
+    "explanation": "son prix, c'est le tarif multiplié par la distance. Un modèle comme celui du robot, mais avec un seul bouton."
+   },
+   {
+    "q": "Que veut dire une erreur plus petite ?",
+    "answers": [
+     "Que le tarif est plus cher",
+     "Que le tarif colle mieux aux prix réellement payés",
+     "Que Sètondji a moins de clients",
+     "Que le calcul est plus rapide"
+    ],
+    "correct": 1,
+    "explanation": "l'erreur ne sert qu'à comparer : plus elle est petite, meilleur est le réglage."
+   },
+   {
+    "q": "Essayer plusieurs tarifs un par un marche pour Sètondji. Pourquoi pas pour le robot ?",
+    "answers": [
+     "Parce que le robot ne sait pas compter",
+     "Parce qu'il a presque cent mille boutons : il y a beaucoup trop de combinaisons",
+     "Parce que ses boutons ne bougent pas",
+     "Parce que l'erreur du robot est toujours nulle"
+    ],
+    "correct": 1,
+    "explanation": "avec un seul bouton, tâtonner suffit. Avec des milliers, il faut un moyen de savoir directement dans quel sens tourner chacun."
+   },
+   {
+    "q": "Que représente le randonneur dans le brouillard ?",
+    "answers": [
+     "Quelqu'un qui connaît déjà le chemin",
+     "Quelqu'un qui ne voit pas le fond de la vallée, mais sent la pente sous ses pieds",
+     "Un robot perdu",
+     "Un client de Sètondji"
+    ],
+    "correct": 1,
+    "explanation": "il ne voit pas la solution, mais il peut tâter le sol : ça descend par là. Un pas, puis il tâte à nouveau."
+   },
+   {
+    "q": "La pente est presque plate. Qu'est-ce que ça signifie ?",
+    "answers": [
+     "Qu'on est très loin du but",
+     "Qu'il faut faire un très grand pas",
+     "Qu'on est tout près du fond de la vallée",
+     "Que le calcul est faux"
+    ],
+    "correct": 2,
+    "explanation": "la taille de la pente donne l'urgence : raide, on est loin ; presque plate, le fond est tout près."
+   },
+   {
+    "q": "Quel est le nom savant de ce « capteur de pente » ?",
+    "answers": [
+     "Le produit scalaire",
+     "La température",
+     "La dérivée",
+     "Le vecteur"
+    ],
+    "correct": 2,
+    "explanation": "on pousse l'entrée d'un tout petit peu, on regarde de combien la sortie bouge : c'est la dérivée."
+   },
+   {
+    "q": "Pourquoi les pas de la descente rétrécissent-ils tout seuls près du fond ?",
+    "answers": [
+     "Parce que l'ordinateur fatigue",
+     "Parce qu'on change le learning rate à la main",
+     "Parce que chaque pas est un petit bout de la pente, et que la pente s'aplatit",
+     "Parce que l'erreur augmente"
+    ],
+    "correct": 2,
+    "explanation": "loin du but, grandes enjambées ; près du but, pas de souris. Personne n'a eu besoin de le programmer."
+   },
+   {
+    "q": "Pendant l'entraînement, l'erreur grimpe au lieu de fondre. Quel est le premier réflexe ?",
+    "answers": [
+     "Ajouter plus de données",
+     "Diviser le learning rate par dix",
+     "Tout recommencer avec un autre modèle",
+     "Augmenter le learning rate"
+    ],
+    "correct": 1,
+    "explanation": "une erreur qui explose, c'est presque toujours un pas trop grand. On le réduit et on relance."
+   },
+   {
+    "q": "Pourquoi Sètondji ajoute-t-il un deuxième bouton, « francs par minute » ?",
+    "answers": [
+     "Pour rouler plus vite",
+     "Parce que les embouteillages font durer certains trajets : le temps compte aussi",
+     "Pour avoir plus de clients",
+     "Parce que la distance ne sert à rien"
+    ],
+    "correct": 1,
+    "explanation": "huit kilomètres en plein centre-ville prennent plus de temps que douze sur une route fluide. La distance seule n'explique pas tout."
+   },
+   {
+    "q": "Comment s'appelle le trajet à rebours, de l'erreur jusqu'aux réglages ?",
+    "answers": [
+     "La descente",
+     "L'échantillonnage",
+     "La rétropropagation",
+     "Le tâtonnage"
+    ],
+    "correct": 2,
+    "explanation": "un aller pour calculer, un retour pour distribuer les pentes : toutes les pentes sont servies d'un coup."
+   }
+  ]
+ },
+ {
+  "slug": "4",
+  "questions": [
+   {
+    "q": "Pourquoi la machine range-t-elle chaque nombre dans une « boîte qui se souvient » ?",
+    "answers": [
+     "Pour économiser de la mémoire",
+     "Pour pouvoir remonter le calcul ensuite, étape par étape",
+     "Pour afficher les nombres plus joliment",
+     "Pour calculer plus vite"
+    ],
+    "correct": 1,
+    "explanation": "comme un ticket de caisse détaillé, la boîte garde la valeur, ses parents et l'opération. Sans ça, impossible de remonter la chaîne des calculs."
+   },
+   {
+    "q": "Ayélé achète 3 ananas à 250 francs. Si elle ajoute un ananas, de combien monte le coût ?",
+    "answers": [
+     "De 3 francs",
+     "De 250 francs",
+     "De 753 francs",
+     "Il ne change pas"
+    ],
+    "correct": 1,
+    "explanation": "la multiplication « échange » : la sensibilité au nombre d'ananas, c'est le prix ; la sensibilité au prix, c'est le nombre d'ananas."
+   },
+   {
+    "q": "Pour x + x, pourquoi la pente vaut-elle 2 ?",
+    "answers": [
+     "Parce que x vaut 2",
+     "Parce que x reçoit deux messages de pente, qui s'additionnent",
+     "Parce que l'addition double toujours tout",
+     "Elle vaut 1, pas 2"
+    ],
+    "correct": 1,
+    "explanation": "x joue deux rôles dans l'addition. Comme deux transferts mobile money de 1 000 francs, les messages s'ajoutent au lieu de se remplacer."
+   },
+   {
+    "q": "Pourquoi faut-il faire remonter les pentes dans un ordre précis ?",
+    "answers": [
+     "Pour que le calcul soit plus joli",
+     "Parce qu'une boîte doit avoir reçu tous ses messages avant de transmettre sa pente",
+     "Parce que l'ordinateur ne sait compter que dans un sens",
+     "L'ordre n'a aucune importance"
+    ],
+    "correct": 1,
+    "explanation": "comme une maison qu'on démonte dans l'ordre inverse de sa construction : le toit d'abord, les fondations en dernier."
+   },
+   {
+    "q": "Notre moteur et PyTorch donnent les mêmes pentes. Pourquoi PyTorch est-il des milliers de fois plus rapide ?",
+    "answers": [
+     "Il utilise une méthode plus précise",
+     "Il devine les pentes au lieu de les calculer",
+     "Chacune de ses boîtes contient un tableau entier, calculé d'un coup sur la carte graphique",
+     "Il saute la moitié des calculs"
+    ],
+    "correct": 2,
+    "explanation": "même méthode, mêmes règles. Notre moteur, c'est une moto qui livre un sac de riz à la fois ; PyTorch, un camion qui charge tout d'un coup."
+   },
+   {
+    "q": "Que note chaque boîte de la machine ?",
+    "answers": [
+     "Seulement sa valeur",
+     "Sa valeur, ses parents et l'opération qui l'a fabriquée",
+     "Le nom de l'utilisateur",
+     "La date du calcul"
+    ],
+    "correct": 1,
+    "explanation": "c'est sa mémoire. Le six se souvient : « je suis né de deux et de trois, par une multiplication »."
+   },
+   {
+    "q": "Comment appelle-t-on l'arbre que forment toutes les boîtes ?",
+    "answers": [
+     "L'organigramme",
+     "Le tableau des scores",
+     "Le graphe de calcul",
+     "Le dictionnaire"
+    ],
+    "correct": 2,
+    "explanation": "calcul après calcul, les boîtes se relient comme un arbre généalogique : chaque résultat connaît ses parents."
+   },
+   {
+    "q": "Tu prends deux taxis : 500 puis 300 francs. Si le premier coûte 100 francs de plus, que devient le total ?",
+    "answers": [
+     "Il ne change pas",
+     "Il monte aussi de 100 francs",
+     "Il monte de 200 francs",
+     "Il double"
+    ],
+    "correct": 1,
+    "explanation": "l'addition transmet le changement tel quel. C'est sa règle : elle passe la pente à ses deux parents sans la modifier."
+   },
+   {
+    "q": "D'où part la remontée des pentes, et avec quelle valeur ?",
+    "answers": [
+     "Du premier nombre, avec une pente de 0",
+     "Du résultat final, avec une pente de 1",
+     "Du milieu de l'arbre, avec une pente de 2",
+     "De n'importe quelle boîte"
+    ],
+    "correct": 1,
+    "explanation": "si le résultat bouge d'un, il bouge d'un. C'est le point de départ obligé, puis on descend boîte par boîte."
+   },
+   {
+    "q": "Aucune opération ne voit le calcul en entier. Comment la pente finale peut-elle être juste ?",
+    "answers": [
+     "Par chance",
+     "Parce qu'un humain vérifie tout",
+     "Parce que chaque opération applique correctement sa petite règle, l'une après l'autre",
+     "Parce que la machine recommence jusqu'à tomber juste"
+    ],
+    "correct": 2,
+    "explanation": "comme dans une entreprise : chacun transmet l'objectif à sa façon, et tout le monde finit par savoir quoi faire."
+   },
+   {
+    "q": "Quelle était l'erreur de la première version de la machine sur « x + x » ?",
+    "answers": [
+     "Elle additionnait trop de messages",
+     "Le deuxième message de pente effaçait le premier",
+     "Elle oubliait la valeur de x",
+     "Elle affichait un message d'erreur"
+    ],
+    "correct": 1,
+    "explanation": "elle répondait 1 au lieu de 2, sans prévenir. La correction : additionner les messages au lieu de les remplacer."
+   },
+   {
+    "q": "Pourquoi faut-il remettre les pentes à zéro avant chaque nouveau tour ?",
+    "answers": [
+     "Pour économiser de l'électricité",
+     "Parce que les pentes s'accumulent : sinon, celles du tour précédent s'ajoutent aux nouvelles",
+     "Pour effacer les réglages",
+     "Ce n'est pas nécessaire"
+    ],
+    "correct": 1,
+    "explanation": "comme le compteur d'un taxi qu'on remet à zéro au début de chaque course."
+   },
+   {
+    "q": "Dans quel ordre le chef d'orchestre fait-il remonter les pentes ?",
+    "answers": [
+     "Dans l'ordre alphabétique",
+     "Au hasard",
+     "Le résultat d'abord, les feuilles en dernier",
+     "Les feuilles d'abord, le résultat en dernier"
+    ],
+    "correct": 2,
+    "explanation": "il range les boîtes dans l'ordre de leur construction, puis lit la liste à l'envers."
+   },
+   {
+    "q": "Comment vérifie-t-on que la machine ne se trompe pas ?",
+    "answers": [
+     "On lui fait confiance",
+     "On refait le calcul de tête",
+     "On compare son résultat à celui du capteur de pente, une méthode totalement différente",
+     "On la relance plusieurs fois"
+    ],
+    "correct": 2,
+    "explanation": "comme peser le même sac sur deux balances du marché : si elles sont d'accord, on peut leur faire confiance."
+   },
+   {
+    "q": "Que réussit le neurone après une centaine de tours d'entraînement ?",
+    "answers": [
+     "Il écrit une fable",
+     "Il classe correctement les quatre élèves, admis ou recalés",
+     "Il calcule plus vite que PyTorch",
+     "Il devine les notes des élèves"
+    ],
+    "correct": 1,
+    "explanation": "et il y arrive sans aucune bibliothèque : seulement avec la machine construite pièce par pièce."
+   }
+  ]
+ },
+ {
+  "slug": "5",
+  "questions": [
+   {
+    "q": "Pour se lire comme des chances, quelles qualités doivent avoir les nombres du robot ?",
+    "answers": [
+     "Être tous plus grands que 1",
+     "N'être jamais négatifs et faire 100 % ensemble",
+     "Être tous égaux",
+     "Être des nombres entiers"
+    ],
+    "correct": 1,
+    "explanation": "comme les parts d'un gâteau : aucune part négative, et toutes réunies font le gâteau entier."
+   },
+   {
+    "q": "Le robot donne les notes 2, 1 et 0,1 aux lettres « i », « o » et « u ». Après le softmax, quelles sont environ leurs chances ?",
+    "answers": [
+     "33 %, 33 % et 33 %",
+     "Environ deux sur trois, une sur quatre et une sur dix",
+     "100 %, 0 % et 0 %",
+     "50 %, 30 % et 20 %"
+    ],
+    "correct": 1,
+    "explanation": "l'exponentielle rend tout positif en gardant l'ordre, puis on divise par le total. Le robot parie sur « i » sans fermer la porte aux autres."
+   },
+   {
+    "q": "Que se passe-t-il quand on baisse beaucoup la température ?",
+    "answers": [
+     "Le robot écrit n'importe quoi",
+     "Le favori écrase les autres et le robot se répète",
+     "Le robot s'arrête d'écrire",
+     "Toutes les lettres ont la même chance"
+    ],
+    "correct": 1,
+    "explanation": "peu de piment, plat sûr mais toujours le même. À fond, le robot répète la même chose, comme un disque rayé."
+   },
+   {
+    "q": "Au tout début de l'entraînement, la loss du robot valait 4,42. Que signifie ce nombre ?",
+    "answers": [
+     "Que le robot connaissait déjà 4 lettres",
+     "C'est la loss d'un robot qui devine au hasard parmi 81 lettres",
+     "Que le robot se trompait 4 fois sur 10",
+     "C'est la note maximale possible"
+    ],
+    "correct": 1,
+    "explanation": "sans rien savoir, il donne une chance sur 81 à la bonne lettre. La loss de ce hasard pur vaut environ 4,4."
+   },
+   {
+    "q": "Pourquoi ChatGPT peut-il donner deux réponses différentes à la même question ?",
+    "answers": [
+     "Parce qu'il a oublié la première réponse",
+     "Parce qu'il cherche une nouvelle source sur Internet",
+     "Parce qu'il tire chaque mot au sort, en respectant ses chances",
+     "Parce qu'il a un bug"
+    ],
+    "correct": 2,
+    "explanation": "le mot le plus probable gagne souvent, mais pas toujours. Le texte reste cohérent et vivant, et change d'une fois à l'autre."
+   },
+   {
+    "q": "Quel est le point commun des trois dernières lignes mystérieuses du programme du robot ?",
+    "answers": [
+     "Les maths",
+     "La vitesse",
+     "Le hasard",
+     "La mémoire"
+    ],
+    "correct": 2,
+    "explanation": "l'une note ses réponses, l'autre transforme ses notes en chances, la dernière tire une lettre au sort."
+   },
+   {
+    "q": "Pourquoi ne suffit-il pas de diviser chaque note par le total pour obtenir des chances ?",
+    "answers": [
+     "Parce que le calcul est trop long",
+     "Parce qu'une note négative donnerait une chance négative, ce qui est absurde",
+     "Parce que le total fait toujours zéro",
+     "Parce que les notes sont trop grandes"
+    ],
+    "correct": 1,
+    "explanation": "« moins 20 % de chances » ne veut rien dire. Il faut d'abord rendre toutes les notes positives."
+   },
+   {
+    "q": "Que fait l'exponentielle ?",
+    "answers": [
+     "Elle trie les notes au hasard",
+     "Elle rend toutes les notes égales",
+     "Elle rend n'importe quel nombre positif, en gardant le classement",
+     "Elle supprime les petites notes"
+    ],
+    "correct": 2,
+    "explanation": "même un nombre très négatif ressort au-dessus de zéro, et la plus grande note reste la plus grande."
+   },
+   {
+    "q": "Que se passe-t-il quand on monte beaucoup la température ?",
+    "answers": [
+     "Le robot se répète",
+     "Les chances des lettres se rapprochent et le robot prend des risques",
+     "Le robot s'arrête",
+     "Le favori écrase tout"
+    ],
+    "correct": 1,
+    "explanation": "beaucoup de piment : c'est original, mais ça peut vite devenir n'importe quoi."
+   },
+   {
+    "q": "Concrètement, que fait la température dans le calcul ?",
+    "answers": [
+     "Elle ajoute un nombre au hasard",
+     "Elle divise les notes, juste avant le softmax",
+     "Elle multiplie les chances par deux",
+     "Elle change l'ordre des lettres"
+    ],
+    "correct": 1,
+    "explanation": "une simple division, mais comme l'exponentielle grossit les écarts, elle change beaucoup le résultat."
+   },
+   {
+    "q": "Pour noter une réponse du robot, que regarde-t-on ?",
+    "answers": [
+     "La longueur de sa réponse",
+     "La lettre la plus probable",
+     "La chance qu'il avait donnée à la bonne réponse",
+     "Le temps qu'il a mis"
+    ],
+    "correct": 2,
+    "explanation": "s'il donnait deux chances sur trois à la bonne lettre, c'est plutôt bien ; s'il lui en donnait une sur cent, c'est très mauvais."
+   },
+   {
+    "q": "Quelle est la chance d'obtenir pile trois fois de suite ?",
+    "answers": [
+     "Une sur deux",
+     "Une sur trois",
+     "Une sur six",
+     "Une sur huit"
+    ],
+    "correct": 3,
+    "explanation": "une sur deux, puis une sur quatre, puis une sur huit. Chaque exigence de plus fait baisser la chance : on multiplie."
+   },
+   {
+    "q": "Pourquoi utilise-t-on le logarithme ?",
+    "answers": [
+     "Pour rendre les chances plus grandes",
+     "Pour transformer les multiplications en additions, et éviter que tout s'écrase à zéro",
+     "Pour choisir la température",
+     "Pour trier les lettres"
+    ],
+    "correct": 1,
+    "explanation": "comme compter les zéros : mille fois mille, c'est 3 + 3 zéros. On additionne au lieu de multiplier."
+   },
+   {
+    "q": "Dans quel cas la loss du robot est-elle énorme ?",
+    "answers": [
+     "Quand il hésite entre deux lettres",
+     "Quand il a raison et qu'il en était sûr",
+     "Quand il donnait très peu de chances à la bonne réponse",
+     "Quand le texte est long"
+    ],
+    "correct": 2,
+    "explanation": "la loss mesure sa surprise. Comme une averse quand la météo annonçait 99 % de soleil."
+   },
+   {
+    "q": "Qu'est-ce que le choix « greedy » (glouton), et quel est son défaut ?",
+    "answers": [
+     "Tirer au sort : le texte devient incohérent",
+     "Toujours prendre la lettre la plus probable : le robot tourne en rond",
+     "Prendre la lettre la moins probable : le texte est faux",
+     "Écrire deux lettres à la fois : le robot va trop vite"
+    ],
+    "correct": 1,
+    "explanation": "comme un ami qui commande toujours le même plat : sûr, mais sans surprise. D'où le tirage au sort."
+   }
+  ]
+ },
+ {
+  "slug": "recap",
+  "questions": [
+   {
+    "q": "En une phrase, que fait un modèle de langage ?",
+    "answers": [
+     "Il comprend le monde comme un humain",
+     "Il devine la suite d'un texte",
+     "Il cherche les réponses dans une base de données",
+     "Il traduit des textes"
+    ],
+    "correct": 1,
+    "explanation": "tout le reste, répondre, résumer, coder, est fabriqué à partir de ce seul talent, répété encore et encore."
+   },
+   {
+    "q": "Où est rangé tout ce que le robot a appris ?",
+    "answers": [
+     "Dans une liste de phrases mémorisées",
+     "Dans un fichier de nombres, rangés en listes et en tableaux",
+     "Dans un dictionnaire de mots",
+     "Sur Internet"
+    ],
+    "correct": 1,
+    "explanation": "son savoir, ce sont ses réglages : des nombres rangés en vecteurs (listes) et en matrices (tableaux)."
+   },
+   {
+    "q": "Comment le robot améliore-t-il ses réglages ?",
+    "answers": [
+     "Un humain les corrige à la main",
+     "Il les change au hasard jusqu'à tomber juste",
+     "Il mesure son erreur et fait un petit pas dans le sens qui la fait baisser",
+     "Il les copie sur ChatGPT"
+    ],
+    "correct": 2,
+    "explanation": "c'est la descente de gradient : sentir la pente, faire un petit pas vers le bas, et recommencer des milliers de fois."
+   },
+   {
+    "q": "Que fait la machine que l'on a construite à l'épisode 4 ?",
+    "answers": [
+     "Elle écrit le texte du robot",
+     "Elle remonte la chaîne des calculs pour trouver toutes les pentes d'un coup",
+     "Elle choisit la température",
+     "Elle télécharge les fables"
+    ],
+    "correct": 1,
+    "explanation": "chaque nombre se souvient de ses parents, chaque opération applique sa petite règle, et les pentes remontent dans le bon ordre."
+   },
+   {
+    "q": "Quelle grande limite a encore notre petit robot ?",
+    "answers": [
+     "Il ne sait écrire qu'en anglais",
+     "Il est trop lent pour un ordinateur",
+     "Il ne voit que les 16 dernières lettres et les écoute toutes de la même façon",
+     "Il ne peut pas apprendre de nouveaux textes"
+    ],
+    "correct": 2,
+    "explanation": "impossible pour lui de suivre une histoire. La Partie II construit les pièces qui manquent, jusqu'à l'attention et au Transformer."
+   },
+   {
+    "q": "Pourquoi dit-on que « le texte est son propre professeur » ?",
+    "answers": [
+     "Parce qu'un professeur a écrit les textes",
+     "Parce que la bonne réponse est déjà écrite juste après ce que le robot lit",
+     "Parce que le robot relit toujours la même phrase",
+     "Parce que le texte contient des règles de grammaire"
+    ],
+    "correct": 1,
+    "explanation": "on cache la lettre suivante, il la devine, et le texte donne la correction. Aucun prof nécessaire."
+   },
+   {
+    "q": "Qu'est-ce qu'un vecteur ?",
+    "answers": [
+     "Un tableau à deux colonnes",
+     "Une liste de nombres, qu'on peut aussi voir comme une flèche",
+     "Un mot du dictionnaire",
+     "Une sorte de robot"
+    ],
+    "correct": 1,
+    "explanation": "comme la recette d'Ayélé, 3 ananas et 2 gingembres : une liste où chaque place a un sens, et une flèche dans l'espace."
+   },
+   {
+    "q": "Quel geste le robot répète-t-il des milliards de fois ?",
+    "answers": [
+     "Lire un dictionnaire",
+     "Tirer une carte",
+     "Le produit matriciel : une ligne contre une colonne",
+     "Compter les lettres d'un mot"
+    ],
+    "correct": 2,
+    "explanation": "c'est le calcul de base de toutes les IA, et la raison pour laquelle elles tournent sur des cartes graphiques."
+   },
+   {
+    "q": "Qu'est-ce que la dérivée ?",
+    "answers": [
+     "Le résultat final du calcul",
+     "La pente : dans quel sens et à quel point l'erreur change quand on bouge un réglage",
+     "Le nombre de réglages",
+     "La température du robot"
+    ],
+    "correct": 1,
+    "explanation": "comme le randonneur dans le brouillard qui sent la pente sous ses pieds."
+   },
+   {
+    "q": "Qu'est-ce que le gradient ?",
+    "answers": [
+     "Le meilleur réglage possible",
+     "Un type de carte graphique",
+     "La liste des pentes, une par réglage",
+     "Le nombre d'erreurs du robot"
+    ],
+    "correct": 2,
+    "explanation": "avec beaucoup de boutons, on a une pente par bouton. Pour descendre, on marche à l'opposé."
+   },
+   {
+    "q": "Que dit la règle de la chaîne ?",
+    "answers": [
+     "Qu'il faut additionner les pentes des étapes",
+     "Que la pente de toute la chaîne est le produit des pentes de ses étapes",
+     "Que seule la dernière étape compte",
+     "Qu'il faut recommencer le calcul à chaque étape"
+    ],
+    "correct": 1,
+    "explanation": "chaque maillon amplifie ce que le précédent lui transmet : les pentes se multiplient."
+   },
+   {
+    "q": "Dans la machine de l'épisode 4, que se passe-t-il quand un nombre sert plusieurs fois ?",
+    "answers": [
+     "Seul le dernier message de pente compte",
+     "Ses messages de pente s'additionnent",
+     "La machine s'arrête",
+     "Sa pente vaut zéro"
+    ],
+    "correct": 1,
+    "explanation": "comme deux transferts mobile money : ils s'ajoutent, ils ne se remplacent pas."
+   },
+   {
+    "q": "À quoi sert le softmax ?",
+    "answers": [
+     "À corriger les réglages",
+     "À choisir la température",
+     "À transformer les notes du robot en chances, toutes positives, qui font 100 % ensemble",
+     "À compter les lettres"
+    ],
+    "correct": 2,
+    "explanation": "l'exponentielle rend tout positif, puis on divise par le total, comme les parts d'un gâteau."
+   },
+   {
+    "q": "Que règle la température ?",
+    "answers": [
+     "La vitesse d'entraînement",
+     "La longueur du texte",
+     "L'audace du robot : prudent ou créatif",
+     "Le nombre de lettres lues"
+    ],
+    "correct": 2,
+    "explanation": "basse, il joue la sécurité et se répète ; haute, il prend des risques."
+   },
+   {
+    "q": "Que va-t-on construire dans la Partie II ?",
+    "answers": [
+     "Un nouveau robot plus rapide",
+     "Le vrai cerveau du robot : neurone, morceaux de mots, attention, Transformer",
+     "Un site de quiz",
+     "Une carte graphique"
+    ],
+    "correct": 1,
+    "explanation": "les fondations sont posées. La suite construit les pièces qui lui manquent, jusqu'à un vrai petit GPT."
+   }
+  ]
+ }
+]
