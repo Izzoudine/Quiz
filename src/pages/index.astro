@@ -1,32 +1,53 @@
 ---
 import Base from "../layouts/Base.astro";
 import Robot from "../components/Robot.astro";
-import QuizCard from "../components/QuizCard.astro";
-import { allQuizzes } from "../lib/data";
+import { parts, partPath, quizKey } from "../lib/data";
+
+// Les parties annoncées mais pas encore dans data/quiz.json
+const upcoming = [{ id: "2", title: "Partie II" }].filter((u) => !parts.some((p) => p.id === u.id && p.quizzes.length));
 ---
-<Base title="LLM de zéro, les quiz" description="Tu viens de voir une vidéo de la série « LLM de zéro » ? Vérifie que tu as tout compris en 15 questions. Sans compte." image="/og/home.jpg">
+<Base title="LLM de zéro, les quiz" description="Les quiz de la série « LLM de zéro » : après chaque vidéo, vérifie que tu as tout compris. Sans compte." image="/og/home.jpg">
   <main class="page">
     <header class="hero">
       <div>
-        <p class="hand red kicker">LLM de zéro, Partie I</p>
+        <p class="hand red kicker">La série LLM de zéro</p>
         <h1>Interro surprise.</h1>
-        <p class="lead">Tu viens de voir une vidéo de la série ? Quinze questions pour vérifier que tu as tout compris. On corrige au stylo rouge, et ton meilleur score reste sur ton appareil : pas de compte, rien d'autre.</p>
+        <p class="lead">On construit un petit modèle de langage de zéro, une vidéo après l'autre. Après chaque vidéo, un quiz pour vérifier que tu as tout compris. Choisis ta partie.</p>
       </div>
       <Robot mood="smile" size={200} class="hero-robot" />
     </header>
-    <h2 class="sr-only">Les quiz</h2>
-    <ul class="grid" role="list">
-      {allQuizzes.map((q, i) => <li><QuizCard quiz={q} index={i} /></li>)}
+
+    <h2 class="sr-only">Les parties</h2>
+    <ul class="parts" role="list">
+      {parts.filter((p) => p.quizzes.length).map((part, i) => (
+        <li>
+          <a class="sheet" href={partPath(part)} style={`--tilt:${i % 2 ? 1 : -1}deg`}>
+            <span class="tape" aria-hidden="true"></span>
+            <span class="pt">{part.title}</span>
+            <span class="ps">{part.quizzes.length} quiz, {part.quizzes.reduce((n, q) => n + q.questions.length, 0)} questions</span>
+            <span class="strip" aria-hidden="true">
+              {part.quizzes.slice(0, 3).map((q) => <img src={q.image} alt="" width="640" height="360" loading="eager" />)}
+            </span>
+            <span class="hand done" data-done={part.quizzes.map((q) => quizKey(part, q)).join(",")} data-total={part.quizzes.length}></span>
+          </a>
+        </li>
+      ))}
+      {upcoming.map((u) => (
+        <li>
+          <div class="sheet soon">
+            <span class="pt">{u.title}</span>
+            <span class="ps">Les quiz arrivent avec les vidéos.</span>
+            <span class="hand soon-note">Bientôt</span>
+          </div>
+        </li>
+      ))}
     </ul>
   </main>
   <script>
     import { getBest } from "../lib/storage";
-    document.querySelectorAll<HTMLElement>("[data-best]").forEach((el) => {
-      const b = getBest(el.dataset.best!);
-      if (b !== null) {
-        el.textContent = `${b}/${el.dataset.total}`;
-        el.setAttribute("aria-label", `Meilleur score : ${b} sur ${el.dataset.total}`);
-      }
+    document.querySelectorAll<HTMLElement>("[data-done]").forEach((el) => {
+      const done = el.dataset.done!.split(",").filter((k) => getBest(k) !== null).length;
+      if (done > 0) el.textContent = `${done} quiz faits sur ${el.dataset.total}`;
     });
   </script>
 </Base>
@@ -37,11 +58,20 @@ import { allQuizzes } from "../lib/data";
   h1 { font-weight: 800; font-size: clamp(2.6rem, 9vw, 4.75rem); letter-spacing: -0.02em; margin-top: 6px; }
   .lead { margin-top: 16px; max-width: 54ch; font-size: clamp(1.0625rem, 2.2vw, 1.2rem); color: var(--ink-soft); }
   :global(.hero-robot) { transform: rotate(4deg); }
-  .grid { list-style: none; padding: 0; margin: 48px 0 0; display: grid; gap: 28px 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr)); max-width: 1100px; }
-  @media (min-width: 900px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 32px; } }
-  @media (max-width: 599px) {
-    .hero { grid-template-columns: 1fr; }
-    :global(.hero-robot) { display: none; }
-    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .parts { list-style: none; padding: 0; margin: 48px 0 0; display: grid; gap: 36px 32px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); max-width: 1100px; }
+  .sheet {
+    display: flex; flex-direction: column; gap: 6px; position: relative; height: 100%;
+    background: #fff; padding: 22px 20px 20px; box-shadow: 0 2px 6px rgba(31, 42, 92, 0.18);
+    text-decoration: none; color: var(--ink); transform: rotate(var(--tilt)); transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
+  a.sheet:hover, a.sheet:focus-visible { transform: rotate(0deg) translateY(-3px); box-shadow: 0 10px 20px -8px rgba(31, 42, 92, 0.35); }
+  .tape { position: absolute; top: -10px; left: 50%; width: 72px; height: 20px; margin-left: -36px; background: var(--tape); transform: rotate(-3deg); }
+  .pt { font-family: var(--serif); font-weight: 800; font-size: 2rem; line-height: 1.05; }
+  .ps { color: var(--ink-soft); }
+  .strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 10px; }
+  .strip img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+  .done { color: var(--red); font-size: 1.5rem; min-height: 1.5rem; }
+  .soon { background: transparent; box-shadow: none; border: 2px dashed var(--rule); transform: none; justify-content: center; min-height: 200px; }
+  .soon-note { color: var(--red); font-size: 2rem; transform: rotate(-4deg); align-self: flex-start; }
+  @media (max-width: 599px) { .hero { grid-template-columns: 1fr; } :global(.hero-robot) { display: none; } }
 </style>

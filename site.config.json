@@ -1,13 +1,15 @@
 {
-  "_aide": "Remplis les liens entre guillemets. Un lien vide masque son bouton. siteUrl vide : l'adresse Vercel est utilisée automatiquement.",
+  "_aide": "Remplis les liens entre guillemets. Un lien vide masque son bouton. siteUrl vide : l'adresse Vercel est utilisée automatiquement. Les quiz sont rangés par partie (\"1\" = Partie I).",
   "siteUrl": "",
   "book": "",
-  "quizzes": {
-    "1": { "video": "", "notebook": "" },
-    "2": { "video": "", "notebook": "" },
-    "3": { "video": "", "notebook": "" },
-    "4": { "video": "", "notebook": "" },
-    "5": { "video": "", "notebook": "" },
-    "recap": { "video": "", "notebook": "" }
+  "parts": {
+    "1": {
+      "1": { "video": "", "notebook": "" },
+      "2": { "video": "", "notebook": "" },
+      "3": { "video": "", "notebook": "" },
+      "4": { "video": "", "notebook": "" },
+      "5": { "video": "", "notebook": "" },
+      "recap": { "video": "", "notebook": "" }
+    }
   }
 }

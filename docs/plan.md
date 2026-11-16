@@ -11,7 +11,7 @@
 **Spec :** `docs/design.md`
 
 ## Contraintes globales
-- Adresses : `/`, `/quiz/1` … `/quiz/5`, `/quiz/recap` ; `trailingSlash: "never"`.
+- Adresses : `/`, `/part1/quiz/1` … `/part1/quiz/5`, `/part1/quiz/recap` (page de la série `/`, page de la partie `/part1`) ; `trailingSlash: "never"`.
 - 15 questions par quiz, 4 réponses, score sur 15.
 - Texte des questions, réponses et explications : identique au PDF, caractère pour caractère (après normalisation des espaces et des retours à la ligne).
 - Couleurs : papier #FCFCF8, encre #1F2A5C, stylo rouge #D23A2E, fluo #9BE8C6, vert ✓ #1E8A5E, marge #E8879A.

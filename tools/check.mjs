@@ -27,10 +27,14 @@ for (const [dev, vp] of [["telephone", { width: 390, height: 844 }], ["ordinateu
   page.on("pageerror", (e) => problems.push(`erreur JS ${dev}: ${e.message}`));
   await page.goto(`${BASE}/`);
   await page.waitForLoadState("networkidle");
+  await axe(page, `série ${dev}`);
+  await page.screenshot({ path: `${OUT}/${dev}-0-serie.png` });
+  await page.goto(`${BASE}/part1`);
+  await page.waitForLoadState("networkidle");
   await axe(page, `accueil ${dev}`);
   await page.screenshot({ path: `${OUT}/${dev}-1-accueil.png`, fullPage: dev === "telephone" ? false : true });
 
-  await page.goto(`${BASE}/quiz/1`);
+  await page.goto(`${BASE}/part1/quiz/1`);
   await page.screenshot({ path: `${OUT}/${dev}-2-debut-quiz.png` });
   await page.click("#start");
   await page.waitForTimeout(500);
@@ -57,8 +61,8 @@ for (const [dev, vp] of [["telephone", { width: 390, height: 844 }], ["ordinateu
   if (grade !== "13/15") problems.push(`score ${dev}: attendu 13/15, obtenu ${grade}`);
   await axe(page, `fin ${dev}`);
   await page.screenshot({ path: `${OUT}/${dev}-5-fin.png`, fullPage: true });
-  await page.goto(`${BASE}/`);
-  const best = await page.textContent('[data-best="1"]');
+  await page.goto(`${BASE}/part1`);
+  const best = await page.textContent('[data-best="1/1"]');
   if (best !== "13/15") problems.push(`meilleur score accueil ${dev}: ${best}`);
   await ctx.close();
 }
@@ -66,17 +70,19 @@ for (const [dev, vp] of [["telephone", { width: 390, height: 844 }], ["ordinateu
 // 320 px : aucun débordement, sur toutes les pages et une réponse ouverte
 const ctx = await browser.newContext({ viewport: { width: 320, height: 640 } });
 const page = await ctx.newPage();
-for (const p of ["/", ...data.map((d) => `/quiz/${d.slug}`)]) {
+for (const p of ["/", "/part1", ...data.map((d) => `/part1/quiz/${d.slug}`)]) {
   await page.goto(`${BASE}${p}`);
   await overflow(page, p);
-  if (p !== "/") {
+  if (p.includes("/quiz/")) {
     await page.click("#start");
     await page.click("#answers button");
     await overflow(page, `${p} (question)`);
   }
 }
-const r404 = await page.goto(`${BASE}/quiz/9`);
-if (r404.status() !== 404) problems.push(`/quiz/9 renvoie ${r404.status()}`);
+for (const p of ["/part1/quiz/9", "/part9", "/quiz/1"]) {
+  const r = await page.goto(`${BASE}${p}`);
+  if (r.status() !== 404) problems.push(`${p} renvoie ${r.status()}`);
+}
 await browser.close();
 
 console.log(problems.length ? problems.join("\n") : "Tout est bon.");

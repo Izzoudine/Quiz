@@ -1,16 +1,16 @@
 ---
 import type { Quiz } from "../lib/data";
-interface Props { quiz: Quiz; index: number; }
-const { quiz, index } = Astro.props;
+interface Props { quiz: Quiz; index: number; href: string; storeKey: string; }
+const { quiz, index, href, storeKey } = Astro.props;
 const tilt = [-2, 1.5, 1, -1.5, -1, 2][index % 6];
 ---
-<a class="polo" href={`/quiz/${quiz.slug}`} style={`--tilt:${tilt}deg`}>
+<a class="polo" href={href} style={`--tilt:${tilt}deg`}>
   <span class="tape" aria-hidden="true"></span>
   <img src={quiz.image} alt="" width="640" height="360" loading={index < 2 ? "eager" : "lazy"} decoding="async" />
   <span class="t">{quiz.title}</span>
   <span class="meta">
     <span>{quiz.questions.length} questions</span>
-    <span class="best hand" data-best={quiz.slug} data-total={quiz.questions.length}></span>
+    <span class="best hand" data-best={storeKey} data-total={quiz.questions.length}></span>
   </span>
 </a>
 

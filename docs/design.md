@@ -5,7 +5,7 @@ Les spectateurs arrivent depuis la description YouTube, presque toujours sur té
 
 ## Objectifs
 - 6 quiz (vidéos 1 à 5 et récap), **15 questions chacun, toutes à la suite**, score sur 15 (choix de l'auteur).
-- Adresses stables : `/quiz/1` … `/quiz/5`, `/quiz/recap`.
+- Adresses stables : `/part1/quiz/1` … `/part1/quiz/5`, `/part1/quiz/recap` (page de la série `/`, page de la partie `/part1`).
 - Lighthouse mobile ≥ 95 en performance, accessibilité et bonnes pratiques.
 - Ajout facile des quiz de la Partie II : on ajoute une entrée dans `data/quiz.json` et une miniature.
 
