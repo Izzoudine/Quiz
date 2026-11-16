@@ -1,0 +1,28 @@
+---
+// Le robot de la série, dessiné au stylo. Humeur via data-mood : smile | think | wink (changeable en JS).
+interface Props { mood?: "smile" | "think" | "wink"; size?: number; class?: string; id?: string; }
+const { mood = "smile", size = 120, class: cls = "", id } = Astro.props;
+---
+<svg id={id} class:list={["robot", cls]} data-mood={mood} viewBox="0 0 160 140" width={size} height={size * 0.875} aria-hidden="true">
+  <rect x="18" y="34" width="124" height="96" rx="28" fill="#FCFCF8" stroke="#1F2A5C" stroke-width="3" />
+  <rect x="36" y="52" width="88" height="60" rx="16" fill="none" stroke="#1F2A5C" stroke-width="2" />
+  <line x1="80" y1="34" x2="80" y2="14" stroke="#1F2A5C" stroke-width="3" />
+  <circle class="ball" cx="80" cy="10" r="6" fill="#F5C64B" stroke="#1F2A5C" stroke-width="2" />
+  <rect x="6" y="66" width="12" height="30" rx="4" fill="#FCFCF8" stroke="#1F2A5C" stroke-width="3" />
+  <rect x="142" y="66" width="12" height="30" rx="4" fill="#FCFCF8" stroke="#1F2A5C" stroke-width="3" />
+  <g class="f-smile"><circle cx="64" cy="78" r="6" fill="#1F2A5C" /><circle cx="96" cy="78" r="6" fill="#1F2A5C" /><path d="M68 92 Q80 102 92 92" stroke="#1F2A5C" stroke-width="3" fill="none" stroke-linecap="round" /></g>
+  <g class="f-think"><circle cx="68" cy="74" r="5" fill="#1F2A5C" /><circle cx="100" cy="72" r="5" fill="#1F2A5C" /><path d="M70 96 L90 93" stroke="#1F2A5C" stroke-width="3" stroke-linecap="round" /><circle cx="140" cy="24" r="4" fill="none" stroke="#1F2A5C" stroke-width="2" /><circle cx="152" cy="10" r="6" fill="none" stroke="#1F2A5C" stroke-width="2" /></g>
+  <g class="f-wink"><circle cx="64" cy="78" r="6" fill="#1F2A5C" /><path d="M89 79 Q96 73 103 79" stroke="#1F2A5C" stroke-width="3" fill="none" stroke-linecap="round" /><path d="M66 91 Q80 104 94 91" stroke="#1F2A5C" stroke-width="3" fill="none" stroke-linecap="round" /></g>
+</svg>
+
+<style>
+  .robot { overflow: visible; flex: none; }
+  .robot g { display: none; }
+  .robot[data-mood="smile"] .f-smile,
+  .robot[data-mood="think"] .f-think,
+  .robot[data-mood="wink"] .f-wink { display: inline; }
+  .robot[data-mood="think"] { animation: tilt 0.5s ease-out; }
+  .robot[data-mood="smile"].bump { animation: hop 0.45s ease-out; }
+  @keyframes tilt { 40% { transform: rotate(-6deg); } }
+  @keyframes hop { 40% { transform: translateY(-8px); } }
+</style>

@@ -1,0 +1,179 @@
+---
+import Base from "../../layouts/Base.astro";
+import Robot from "../../components/Robot.astro";
+import { allQuizzes, linksFor, nextQuiz, type Quiz } from "../../lib/data";
+
+export function getStaticPaths() {
+  return allQuizzes.map((quiz) => ({ params: { slug: quiz.slug }, props: { quiz } }));
+}
+const { quiz } = Astro.props as { quiz: Quiz };
+const links = linksFor(quiz.slug);
+const next = nextQuiz(quiz.slug);
+const total = quiz.questions.length;
+const pageUrl = new URL(`/quiz/${quiz.slug}`, Astro.site).href;
+const payload = { slug: quiz.slug, title: quiz.title, questions: quiz.questions, url: pageUrl };
+const label = quiz.slug === "recap" ? "le récap de la Partie I" : `la vidéo ${quiz.slug}`;
+---
+<Base title={`Quiz : ${quiz.title}, LLM de zéro`} description={`As-tu bien compris ${label} de « LLM de zéro » ? ${total} questions, sans compte.`} image={`/og/${quiz.slug}.jpg`}>
+  <main class="page quiz">
+    <!-- Accueil du quiz -->
+    <section id="intro" class="intro" aria-labelledby="intro-title">
+      <a class="back" href="/">Tous les quiz</a>
+      <div class="intro-grid">
+        <div>
+          <p class="hand red kicker">{quiz.number}</p>
+          <h1 id="intro-title">{quiz.title}</h1>
+          <p class="lead">{total} questions, à la suite, sur ce que montre la vidéo. Après chaque réponse, une courte explication. Compte une dizaine de minutes.</p>
+          <p class="hand best-line" id="intro-best" hidden></p>
+          <div class="actions">
+            <button class="btn" id="start" type="button">Commencer le quiz</button>
+            {links.video && <a class="btn ghost" href={links.video} rel="noopener">Revoir la vidéo</a>}
+          </div>
+        </div>
+        <img class="thumb" src={quiz.image} alt="" width="640" height="360" />
+      </div>
+    </section>
+
+    <!-- Une question -->
+    <section id="play" class="play" hidden aria-labelledby="q-text">
+      <div class="topbar">
+        <p class="hand progress-text" id="progress-text">Question 1 / {total}</p>
+        <a class="close" href="/" aria-label="Quitter le quiz">×</a>
+      </div>
+      <div class="ticks" aria-hidden="true">{quiz.questions.map(() => <i></i>)}</div>
+      <div class="q-head">
+        <Robot id="robot" mood="smile" size={72} class="q-robot" />
+        <h2 id="q-text" tabindex="-1"></h2>
+      </div>
+      <ol class="answers" id="answers" aria-label="Réponses"></ol>
+      <div class="feedback" id="feedback" hidden tabindex="-1">
+        <p class="hand verdict" id="verdict"></p>
+        <p id="explanation"></p>
+      </div>
+      <div class="next-row">
+        <button class="btn" id="next" type="button" hidden>Question suivante</button>
+        <p class="muted hint" id="hint">Astuce : tape a, b, c ou d.</p>
+      </div>
+    </section>
+
+    <!-- Fin -->
+    <section id="end" class="end" hidden aria-labelledby="end-title">
+      <div class="end-head">
+        <Robot mood="wink" size={130} />
+        <div>
+          <h2 id="end-title" tabindex="-1"><span class="sr-only">Ton score : </span><span class="hand grade" id="grade">0/{total}</span></h2>
+          <p class="end-msg" id="end-msg"></p>
+          <p class="hand best-line" id="end-best"></p>
+        </div>
+      </div>
+      <div class="actions wrap">
+        <button class="btn" id="restart" type="button">Refaire le quiz</button>
+        {next ? <a class="btn ghost" href={`/quiz/${next.slug}`}>Quiz suivant</a> : <a class="btn ghost" href="/">Tous les quiz</a>}
+        {links.video && <a class="btn ghost" href={links.video} rel="noopener">Revoir la vidéo</a>}
+        {links.notebook && <a class="btn ghost" href={links.notebook} rel="noopener">Le notebook du chapitre</a>}
+        {links.book && <a class="btn ghost" href={links.book} rel="noopener">Le livre</a>}
+      </div>
+      <div class="share">
+        <p class="hand share-title">Partager mon score</p>
+        <div class="actions wrap">
+          <a class="btn ghost small" id="wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+          <button class="btn ghost small" id="copy" type="button">Copier le lien</button>
+          <span class="hand copied" id="copied" aria-live="polite"></span>
+        </div>
+      </div>
+      <div id="missed-wrap">
+        <h3 class="missed-title">À revoir</h3>
+        <ol class="missed" id="missed"></ol>
+      </div>
+    </section>
+
+    <p class="sr-only" id="live" aria-live="polite"></p>
+  </main>
+  <script id="quiz-data" type="application/json" set:html={JSON.stringify(payload)} />
+  <script>
+    import { mountQuiz } from "../../scripts/quiz";
+    mountQuiz();
+  </script>
+</Base>
+
+<style>
+  .quiz { max-width: 900px; }
+  .back { display: inline-block; margin-bottom: 20px; color: var(--ink-soft); font-weight: 700; min-height: 44px; line-height: 44px; }
+  .intro-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 320px); gap: 32px; align-items: center; }
+  .kicker { font-size: 1.6rem; line-height: 1; }
+  h1 { font-weight: 800; font-size: clamp(2.2rem, 7vw, 3.75rem); letter-spacing: -0.02em; margin-top: 6px; }
+  .lead { margin-top: 14px; max-width: 50ch; color: var(--ink-soft); }
+  .thumb { background: #fff; padding: 8px; box-shadow: 0 2px 6px rgba(31, 42, 92, 0.18); transform: rotate(2deg); width: 100%; height: auto; }
+  .best-line { color: var(--red); font-size: 1.5rem; margin-top: 12px; }
+  .actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+  @media (max-width: 640px) {
+    .intro-grid { grid-template-columns: 1fr; }
+    .thumb { order: -1; max-width: 320px; }
+    .actions:not(.wrap) .btn { flex: 1 1 100%; }
+  }
+
+  .topbar { display: flex; justify-content: space-between; align-items: center; }
+  .progress-text { font-size: 1.6rem; }
+  .close { font-size: 2rem; line-height: 1; text-decoration: none; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; }
+  .ticks { display: flex; gap: 4px; margin: 6px 0 22px; }
+  .ticks i { flex: 1; height: 4px; border-radius: 2px; background: var(--rule); transition: background-color 0.3s ease; }
+  .ticks i.on { background: var(--ink); }
+  .ticks i.miss { background: var(--red); }
+  .q-head { display: flex; gap: 14px; align-items: flex-start; }
+  :global(.q-robot) { margin-top: 2px; }
+  #q-text { font-weight: 600; font-size: clamp(1.45rem, 4.6vw, 2.5rem); line-height: 1.18; letter-spacing: -0.01em; outline: none; }
+  .play.enter #q-text, .play.enter .answers { animation: write 0.35s ease-out both; }
+  .play.enter .answers { animation-delay: 0.08s; }
+  @keyframes write { from { opacity: 0; transform: translateY(6px); } }
+
+  .answers { list-style: none; padding: 0; margin: 18px 0 0; }
+  .answers :global(button) {
+    display: flex; align-items: flex-start; gap: 14px; width: 100%; min-height: 56px; padding: 13px 6px;
+    border: none; border-bottom: 1.5px solid var(--rule); background: transparent; text-align: left;
+    font-size: clamp(1.0625rem, 2.4vw, 1.25rem); line-height: 1.35; position: relative; border-radius: 0;
+  }
+  .answers :global(button:hover:not([aria-disabled="true"])) { background: rgba(155, 232, 198, 0.18); }
+  .answers :global(.lt) { font-family: var(--serif); font-weight: 800; width: 26px; flex: none; }
+  .answers :global(.txt) { overflow-wrap: anywhere; }
+  .answers :global(.right .txt) {
+    background: linear-gradient(transparent 38%, var(--hl) 38%, var(--hl) 90%, transparent 90%) no-repeat;
+    background-size: 100% 100%; animation: swipe 0.45s ease-out both; box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  }
+  @keyframes swipe { from { background-size: 0% 100%; } }
+  .answers :global(.right .lt::after) { content: "✓"; position: absolute; right: 6px; font-family: var(--hand); color: var(--green); font-size: 1.6rem; line-height: 1; }
+  .answers :global(.wrong .txt) { text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: 2.5px; color: var(--ink-soft); }
+  .answers :global(.wrong .lt::before) { content: ""; position: absolute; left: -4px; top: 6px; width: 36px; height: 40px; border: 2.5px solid var(--red); border-radius: 50%; transform: rotate(-8deg); animation: ring 0.35s ease-out both; }
+  @keyframes ring { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  .answers :global(.dim) { opacity: 0.6; }
+  .answers :global(button[aria-disabled="true"]) { cursor: default; }
+
+  .feedback { margin-top: 18px; padding: 4px 0 4px 16px; border-left: 3px solid var(--red); outline: none; animation: write 0.35s ease-out both; }
+  .feedback.ok { border-left-color: var(--green); }
+  .verdict { font-size: 1.75rem; line-height: 1.1; color: var(--red); }
+  .feedback.ok .verdict { color: var(--green); }
+  #explanation { margin-top: 4px; font-size: 1.0625rem; max-width: 62ch; }
+  .next-row { margin-top: 26px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .hint { font-size: 0.9375rem; }
+  @media (max-width: 640px) { #next { width: 100%; } .hint { display: none; } }
+  @media (hover: none) { .hint { display: none; } }
+
+  .end-head { display: flex; gap: 22px; align-items: center; }
+  .grade { font-size: clamp(4rem, 16vw, 6.5rem); line-height: 0.9; color: var(--red); display: inline-block; transform: rotate(-4deg); }
+  #end-title { outline: none; }
+  .end-msg { margin-top: 10px; font-size: 1.125rem; max-width: 46ch; }
+  .share { margin-top: 28px; }
+  .share-title { font-size: 1.5rem; }
+  .share .actions { margin-top: 6px; align-items: center; }
+  .copied { color: var(--green); font-size: 1.4rem; }
+  .missed-title { margin-top: 40px; font-size: 1.6rem; font-weight: 800; }
+  .missed { padding: 0; list-style: none; margin: 10px 0 0; }
+  .missed :global(li) { padding: 16px 0; border-bottom: 1.5px solid var(--rule); }
+  .missed :global(.mq) { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; line-height: 1.25; }
+  .missed :global(.ma) { margin-top: 6px; }
+  .missed :global(.ma b) { background: linear-gradient(transparent 40%, var(--hl) 40%, var(--hl) 90%, transparent 90%); font-weight: 700; }
+  .missed :global(.me) { margin-top: 4px; color: var(--ink-soft); }
+  @media (max-width: 640px) { .end-head { flex-direction: column; align-items: flex-start; } .end .actions .btn { flex: 1 1 100%; } }
+
+  :global(.confetti) { position: fixed; top: -12px; width: 9px; height: 14px; z-index: 10; pointer-events: none; animation: fall 2.4s cubic-bezier(.2,.6,.4,1) forwards; }
+  @keyframes fall { to { transform: translate3d(var(--dx), 105vh, 0) rotate(var(--rot)); opacity: 0.9; } }
+</style>

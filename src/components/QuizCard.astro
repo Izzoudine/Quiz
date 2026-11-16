@@ -1,0 +1,36 @@
+---
+import type { Quiz } from "../lib/data";
+interface Props { quiz: Quiz; index: number; }
+const { quiz, index } = Astro.props;
+const tilt = [-2, 1.5, 1, -1.5, -1, 2][index % 6];
+---
+<a class="polo" href={`/quiz/${quiz.slug}`} style={`--tilt:${tilt}deg`}>
+  <span class="tape" aria-hidden="true"></span>
+  <img src={quiz.image} alt="" width="640" height="360" loading={index < 2 ? "eager" : "lazy"} decoding="async" />
+  <span class="t">{quiz.title}</span>
+  <span class="meta">
+    <span>{quiz.number}, {quiz.questions.length} questions</span>
+    <span class="best hand" data-best={quiz.slug} data-total={quiz.questions.length}></span>
+  </span>
+</a>
+
+<style>
+  .polo {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 8px 8px 12px;
+    box-shadow: 0 2px 6px rgba(31, 42, 92, 0.18);
+    text-decoration: none;
+    color: var(--ink);
+    position: relative;
+    transform: rotate(var(--tilt));
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .polo:hover, .polo:focus-visible { transform: rotate(0deg) translateY(-3px); box-shadow: 0 10px 20px -8px rgba(31, 42, 92, 0.35); }
+  .tape { position: absolute; top: -10px; left: 50%; width: 64px; height: 20px; margin-left: -32px; background: var(--tape); transform: rotate(-3deg); }
+  img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+  .t { font-family: var(--serif); font-weight: 600; font-size: 1rem; line-height: 1.2; margin-top: 10px; }
+  .meta { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-top: 4px; font-size: 0.875rem; color: var(--ink-soft); }
+  .best { font-size: 1.5rem; line-height: 1; color: var(--red); white-space: nowrap; }
+</style>

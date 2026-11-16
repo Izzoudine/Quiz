@@ -1,0 +1,47 @@
+---
+import Base from "../layouts/Base.astro";
+import Robot from "../components/Robot.astro";
+import QuizCard from "../components/QuizCard.astro";
+import { allQuizzes } from "../lib/data";
+---
+<Base title="LLM de zéro, les quiz" description="Tu viens de voir une vidéo de la série « LLM de zéro » ? Vérifie que tu as tout compris en 15 questions. Sans compte." image="/og/home.jpg">
+  <main class="page">
+    <header class="hero">
+      <div>
+        <p class="hand red kicker">LLM de zéro, Partie I</p>
+        <h1>Interro surprise.</h1>
+        <p class="lead">Tu viens de voir une vidéo de la série ? Quinze questions pour vérifier que tu as tout compris. On corrige au stylo rouge, et ton meilleur score reste sur ton appareil : pas de compte, rien d'autre.</p>
+      </div>
+      <Robot mood="smile" size={200} class="hero-robot" />
+    </header>
+    <h2 class="sr-only">Les quiz</h2>
+    <ul class="grid" role="list">
+      {allQuizzes.map((q, i) => <li><QuizCard quiz={q} index={i} /></li>)}
+    </ul>
+  </main>
+  <script>
+    import { getBest } from "../lib/storage";
+    document.querySelectorAll<HTMLElement>("[data-best]").forEach((el) => {
+      const b = getBest(el.dataset.best!);
+      if (b !== null) {
+        el.textContent = `${b}/${el.dataset.total}`;
+        el.setAttribute("aria-label", `Meilleur score : ${b} sur ${el.dataset.total}`);
+      }
+    });
+  </script>
+</Base>
+
+<style>
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: end; max-width: 1100px; }
+  .kicker { font-size: 1.6rem; line-height: 1; }
+  h1 { font-weight: 800; font-size: clamp(2.6rem, 9vw, 4.75rem); letter-spacing: -0.02em; margin-top: 6px; }
+  .lead { margin-top: 16px; max-width: 54ch; font-size: clamp(1.0625rem, 2.2vw, 1.2rem); color: var(--ink-soft); }
+  :global(.hero-robot) { transform: rotate(4deg); }
+  .grid { list-style: none; padding: 0; margin: 48px 0 0; display: grid; gap: 28px 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr)); max-width: 1100px; }
+  @media (min-width: 900px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 32px; } }
+  @media (max-width: 599px) {
+    .hero { grid-template-columns: 1fr; }
+    :global(.hero-robot) { display: none; }
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+</style>

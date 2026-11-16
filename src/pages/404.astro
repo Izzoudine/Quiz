@@ -1,0 +1,12 @@
+---
+import Base from "../layouts/Base.astro";
+import Robot from "../components/Robot.astro";
+---
+<Base title="Page introuvable, LLM de zéro" description="Cette page n'existe pas." image="/og/home.jpg">
+  <main class="page" style="display:flex;flex-direction:column;gap:20px;align-items:flex-start;padding-top:64px">
+    <Robot mood="think" size={140} />
+    <h1 style="font-size:clamp(2rem,7vw,3.5rem);font-weight:800">Cette page n'est pas dans le cahier.</h1>
+    <p class="muted">Le lien est peut-être incomplet. Tous les quiz sont sur l'accueil.</p>
+    <a class="btn" href="/">Voir tous les quiz</a>
+  </main>
+</Base>
